@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition", "SignatureRecognition\SignatureRecognition.csproj", "{66D29EEC-BE06-4195-8F46-5F8EEE19C226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition.UITests", "SignatureRecognition.UITests\SignatureRecognition.UITests.csproj", "{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
