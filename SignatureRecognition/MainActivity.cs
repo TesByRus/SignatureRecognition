@@ -9,10 +9,9 @@ using Android.OS;
 
 namespace SignatureRecognition
 {
-    [Activity(Label = "SignatureRecognition", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "SignatureRecognition", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation=Android.Content.PM.ScreenOrientation.Landscape)]
     public class MainActivity : Activity
     {
-        int count = 1;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -20,15 +19,6 @@ namespace SignatureRecognition
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
-			
-            button.Click += delegate
-            {
-                button.Text = string.Format("{0} clicks!", count++);
-            };
         }
     }
 }
