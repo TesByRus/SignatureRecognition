@@ -1,104 +1,105 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
+﻿using Android.Content;
+using Android.Graphics;
 using Android.Util;
 using Android.Views;
-using Android.Widget;
 
-using Android.Graphics;
-using Android.Views;
-
-namespace SignatureRecognition
+namespace SignatureRecognition.Views
 {
-    [Register ("signaturerecognition.DrawingView")]
+    // Original Source: http://csharp-tricks-en.blogspot.com/2014/05/android-draw-on-screen-by-finger.html
     public class DrawingView : View
     {
-        //drawing path
-        private Path drawPath;
-        //drawing and canvas paint
-        private Paint drawPaint, canvasPaint;
-        //canvas
-        private Canvas drawCanvas;
-        //canvas bitmap
-        private Bitmap canvasBitmap;
-
         public DrawingView(Context context)
             : base(context)
         {
-            Initialize();
+            Start();
         }
-
         public DrawingView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
-            Initialize();
-            SetupDrawing();
+            Start();
+        }
+        public DrawingView(Context context, IAttributeSet attrs, int defStyle) : base(context, attrs, defStyle)
+        {
+            Start();
         }
 
-        public DrawingView(Context context, IAttributeSet attrs, int defStyle)
-            : base(context, attrs, defStyle)
+        public DrawingView(Context context, IAttributeSet attrs, int defStyle, int defStyleRes) : base(context, attrs, defStyle, defStyleRes)
         {
-            Initialize();
+            Start();
         }
 
-        void Initialize()
-        {
-        }
+        public Color CurrentLineColor { get; set; }
 
-        void SetupDrawing()
+        public float PenWidth { get; set; }
+
+        private Path DrawPath;
+        private Paint DrawPaint;
+        private Paint CanvasPaint;
+        private Canvas DrawCanvas;
+        private Bitmap CanvasBitmap;
+
+        private void Start()
         {
-            drawPath = new Path();
-            drawPaint = new Paint();
-            drawPaint.Color = new Color(Color.Black);
-            drawPaint.AntiAlias = true;
-            drawPaint.StrokeWidth = 20;
-            drawPaint.SetStyle(Paint.Style.Stroke);
-            drawPaint.StrokeJoin = Paint.Join.Round;
-            drawPaint.StrokeCap = Paint.Cap.Round;
-            canvasPaint = new Paint(PaintFlags.Dither);
+            CurrentLineColor = Color.Black;
+            PenWidth = 5.0f;
+
+            DrawPath = new Path();
+            DrawPaint = new Paint
+            {
+                Color = CurrentLineColor,
+                AntiAlias = true,
+                StrokeWidth = PenWidth
+            };
+
+            DrawPaint.SetStyle(Paint.Style.Stroke);
+            DrawPaint.StrokeJoin = Paint.Join.Round;
+            DrawPaint.StrokeCap = Paint.Cap.Round;
+
+            CanvasPaint = new Paint
+            {
+                Dither = true
+            };
         }
 
         protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
         {
             base.OnSizeChanged(w, h, oldw, oldh);
-            canvasBitmap = Bitmap.CreateBitmap(w, h, Bitmap.Config.Argb8888);
-            drawCanvas = new Canvas(canvasBitmap);
+
+            CanvasBitmap = Bitmap.CreateBitmap(w, h, Bitmap.Config.Argb8888);
+            DrawCanvas = new Canvas(CanvasBitmap);
         }
 
         protected override void OnDraw(Canvas canvas)
         {
-            //base.OnDraw(canvas);
-            canvas.DrawBitmap(canvasBitmap, 0, 0, canvasPaint);
-            canvas.DrawPath(drawPath, drawPaint);
+            base.OnDraw(canvas);
+
+            DrawPaint.Color = CurrentLineColor;
+            canvas.DrawBitmap(CanvasBitmap, 0, 0, CanvasPaint);
+            canvas.DrawPath(DrawPath, DrawPaint);
         }
 
         public override bool OnTouchEvent(MotionEvent e)
         {
-            float touchX = e.GetX();
-            float touchY = e.GetY();
+            var touchX = e.GetX();
+            var touchY = e.GetY();
 
-            switch (e.Action) {
+            switch (e.Action)
+            {
                 case MotionEventActions.Down:
-                    drawPath.MoveTo(touchX, touchY);
+                    DrawPath.MoveTo(touchX, touchY);
                     break;
                 case MotionEventActions.Move:
-                    drawPath.LineTo(touchX, touchY);
+                    DrawPath.LineTo(touchX, touchY);
                     break;
                 case MotionEventActions.Up:
-                    drawCanvas.DrawPath(drawPath, drawPaint);
-                    drawPath.Reset();
+                    DrawCanvas.DrawPath(DrawPath, DrawPaint);
+                    DrawPath.Reset();
                     break;
                 default:
                     return false;
             }
 
             Invalidate();
+
             return true;
         }
     }
