@@ -3,6 +3,14 @@ using Android.Graphics;
 using Android.Util;
 using Android.Views;
 
+using System;
+using System.Threading;
+
+using Android.App;
+using Android.Runtime;
+using Android.Widget;
+using Android.OS;
+
 namespace SignatureRecognition.Views
 {
     // Original Source: http://csharp-tricks-en.blogspot.com/2014/05/android-draw-on-screen-by-finger.html
@@ -27,6 +35,9 @@ namespace SignatureRecognition.Views
             Start();
         }
 
+        public delegate void CoordinateChangeMethodContainer(int x, int y);
+        public event CoordinateChangeMethodContainer OnCoordinatesChange;
+
         public Color CurrentLineColor { get; set; }
 
         public float PenWidth { get; set; }
@@ -36,6 +47,8 @@ namespace SignatureRecognition.Views
         private Paint CanvasPaint;
         private Canvas DrawCanvas;
         private Bitmap CanvasBitmap;
+
+        private bool drawed = false;
 
         private void Start()
         {
@@ -58,6 +71,12 @@ namespace SignatureRecognition.Views
             {
                 Dither = true
             };
+        }
+
+        public void Clear()
+        {
+            this.Start();
+            DrawCanvas.DrawColor(Color.Transparent, PorterDuff.Mode.Clear);
         }
 
         protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
@@ -86,20 +105,21 @@ namespace SignatureRecognition.Views
             {
                 case MotionEventActions.Down:
                     DrawPath.MoveTo(touchX, touchY);
+                    OnCoordinatesChange((int)touchX, (int)touchY);
                     break;
                 case MotionEventActions.Move:
                     DrawPath.LineTo(touchX, touchY);
+                    OnCoordinatesChange((int)touchX, (int)touchY);
                     break;
                 case MotionEventActions.Up:
                     DrawCanvas.DrawPath(DrawPath, DrawPaint);
                     DrawPath.Reset();
+                    OnCoordinatesChange((int)touchX, (int)touchY);
                     break;
                 default:
                     return false;
             }
-
-            Invalidate();
-
+            PostInvalidate();
             return true;
         }
     }

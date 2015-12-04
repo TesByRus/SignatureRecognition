@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.yusupovdanil.signaturerecognition">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.yusupovdanil.signaturerecognition" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" />
-	<application android:label="Signature Recognition" android:theme="@android:style/Theme.Material.Light.DarkActionBar"></application>
+	<application android:label="Signature Recognition" android:theme="@style/MyTheme"></application>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
