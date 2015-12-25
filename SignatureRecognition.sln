@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition", "SignatureRecognition\SignatureRecognition.csproj", "{66D29EEC-BE06-4195-8F46-5F8EEE19C226}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition.Android", "SignatureRecognition\SignatureRecognition.Android.csproj", "{66D29EEC-BE06-4195-8F46-5F8EEE19C226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition.UITests", "SignatureRecognition.UITests\SignatureRecognition.UITests.csproj", "{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition.Core", "SignatureRecognition.Core\SignatureRecognition.Core.csproj", "{378D8739-8442-43A9-8372-0F7E1084084F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureRecognition.WinForms", "SignatureRecognition.WinForms\SignatureRecognition.WinForms.csproj", "{D2C390BE-EA53-491B-B25F-A68547491DE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +20,14 @@ Global
 		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D29EEC-BE06-4195-8F46-5F8EEE19C226}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0BFBCDF-0BA5-49C9-A670-BC1D9B67E507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378D8739-8442-43A9-8372-0F7E1084084F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378D8739-8442-43A9-8372-0F7E1084084F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378D8739-8442-43A9-8372-0F7E1084084F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378D8739-8442-43A9-8372-0F7E1084084F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C390BE-EA53-491B-B25F-A68547491DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C390BE-EA53-491B-B25F-A68547491DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C390BE-EA53-491B-B25F-A68547491DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C390BE-EA53-491B-B25F-A68547491DE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

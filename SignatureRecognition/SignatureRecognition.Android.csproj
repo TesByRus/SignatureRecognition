@@ -59,11 +59,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Signature.cs" />
-    <Compile Include="SignaturePoint.cs" />
-    <Compile Include="Signatures.cs" />
-    <Compile Include="SQLite.cs" />
-    <Compile Include="SQLiteAsync.cs" />
     <Compile Include="Views\DrawingView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,5 +115,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_save_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SignatureRecognition.Core\SignatureRecognition.Core.csproj">
+      <Project>{378d8739-8442-43a9-8372-0f7e1084084f}</Project>
+      <Name>SignatureRecognition.Core</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

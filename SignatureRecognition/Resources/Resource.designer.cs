@@ -1684,7 +1684,10 @@ namespace SignatureRecognition
 			public const int Icon = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int notification_template_icon_bg = 2130837571;
+			public const int monoandroidsplash = 2130837571;
+			
+			// aapt resource value: 0x7f020044
+			public const int notification_template_icon_bg = 2130837572;
 			
 			static Drawable()
 			{
@@ -2764,6 +2767,9 @@ namespace SignatureRecognition
 			
 			// aapt resource value: 0x7f07012f
 			public const int Base_Widget_Design_TabLayout = 2131165487;
+			
+			// aapt resource value: 0x7f07013f
+			public const int Mono_Android_Theme_Splash = 2131165503;
 			
 			// aapt resource value: 0x7f07013d
 			public const int MyTheme = 2131165501;
